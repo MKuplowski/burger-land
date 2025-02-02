@@ -1,0 +1,45 @@
+{
+ "title": "Burger Land",
+ "welcome": "Welcome to Burger Land",
+ "actions": {
+  "cancel": "Cancel",
+  "confirm": "Confirm Selection",
+  "adding": "Adding...",
+  "addToCart": "Add to Cart",
+  "continueShopping": "Continue Shopping",
+  "checkout": "Proceed to Checkout"
+ },
+ "form": {
+  "selectDate": "Select Date",
+  "quantity": "Quantity",
+  "date": "Date"
+ },
+ "validation": {
+  "dateRequired": "Date is required",
+  "quantityRequired": "Quantity is required"
+ },
+ "errors": {
+  "cartCreationError": "Failed to create cart",
+  "addToCartError": "Failed to add item to cart",
+  "somethingWentWrong": "Something went wrong!",
+  "tryAgain": "Try again"
+ },
+ "sections": {
+  "tickets": {
+   "title": "Tickets"
+  },
+  "bestsellers": {
+   "title": "Bestsellers"
+  },
+  "cart": {
+   "view": "View Cart",
+   "title": "Your Cart",
+   "empty": "Your cart is empty",
+   "summary": "Summary",
+   "total": "Total"
+  }
+ },
+ "status": {
+  "loading": "Loading..."
+ }
+} 

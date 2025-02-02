@@ -1,0 +1,45 @@
+{
+  "title": "Burger Land",
+  "welcome": "Witaj w Burger Land",
+  "actions": {
+    "cancel": "Anuluj",
+    "confirm": "Potwierdź wybór",
+    "adding": "Dodawanie...",
+    "addToCart": "Dodaj do koszyka",
+    "continueShopping": "Kontynuuj zakupy",
+    "checkout": "Przejdź do płatności"
+  },
+  "form": {
+    "selectDate": "Wybierz datę",
+    "quantity": "Ilość",
+    "date": "Data"
+  },
+  "validation": {
+    "dateRequired": "Data jest wymagana",
+    "quantityRequired": "Ilość jest wymagana"
+  },
+  "errors": {
+    "cartCreationError": "Nie udało się utworzyć koszyka",
+    "addToCartError": "Nie udało się dodać przedmiotu do koszyka",
+    "somethingWentWrong": "Coś poszło nie tak!",
+    "tryAgain": "Spróbuj ponownie"
+  },
+  "sections": {
+    "tickets": {
+      "title": "Bilety"
+    },
+    "bestsellers": {
+      "title": "Bestsellery"
+    },
+    "cart": {
+      "view": "Zobacz koszyk",
+      "title": "Twój koszyk",
+      "empty": "Twój koszyk jest pusty",
+      "summary": "Podsumowanie",
+      "total": "Razem"
+    }
+  },
+  "status": {
+    "loading": "Ładowanie..."
+  }
+} 
