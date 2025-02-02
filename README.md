@@ -12,7 +12,7 @@
 
 ## Technologies
 
-*   **Next.js** with **App Router** - A fast and convenient **React** framework.
+*   **Next.js** with **App Router** - A fast and convenient **React** framework with react-compiler installed.
 *   **TypeScript**
 *   **Tailwind CSS** - Rapid styling
 *   **`@tanstack/react-query`** - Data fetching, caching, optimistic updates

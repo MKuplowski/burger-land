@@ -8,7 +8,7 @@ const config = {
   images: {
     domains: [],
   },
-  experimental: { typedRoutes: true },
+  experimental: { typedRoutes: true, reactCompiler: true },
 };
 
 module.exports = withNextIntl(config);
