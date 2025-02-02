@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "unused-imports", "eslint-plugin-react-compiler"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "react-compiler/react-compiler": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": "off",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "no-trailing-spaces": "error"
+  }
+}
