@@ -65,3 +65,78 @@ flowchart TD
 ```
 
 ---
+
+**Architecture Diagram:**
+
+```mermaid
+flowchart TD
+    A["User (Browser Client)"] --> B["Next.js Frontend (React)"]
+    B --> V1["Client-Side Validation (Zod)"]
+    V1 --> LB[Load Balancer]
+    LB --> C["Next.js API Routes / Application Server (Node.js)"]
+    C --> P["API Validation (Zod)"]
+    P --> CS(Cart Service)
+    P --> PS(Product Service)
+    P --> OS(Order Service)
+    
+    CS --> DB1(Cart Database)
+    PS --> DB2(Product Database)
+    OS --> DB3(Order Database)
+    OS --> PAY(Payment Gateway)
+    CS --> RS(Reservation Service?)
+    RS --> DB3
+
+    %% Nowa ścieżka dla logowania dopiero przy płatności
+    OS --> S["Auth Service"]
+    S -- Guest Checkout --> PAY
+    S -- Registered User --> PAY
+
+    subgraph "Scalable Infrastructure"
+        C1["Application Server (Node.js)"]
+        C2["Application Server (Node.js)"]
+        C3["Application Server (Node.js)"]
+        C1 -- Cluster Communication --- C2
+        C2 -- Cluster Communication --- C3
+        C3 -- Cluster Communication --- C1
+    end
+
+    subgraph Infrastructure
+        I1["CI/CD, Kubernetes, Servers"]
+    end
+
+    subgraph "Monitoring & Analytics"
+        M1["Error Tracking e.g. Sentry"]
+        M2["Analytics e.g. Snowplow"]
+    end
+
+    %% Monitoring arrows
+    B -.-> M1
+    B -.-> M2
+    C -.-> M1
+    C -.-> M2
+    CS -.-> M1
+    CS -.-> M2
+    PS -.-> M1
+    PS -.-> M2
+    OS -.-> M1
+    OS -.-> M2
+
+    %% Infrastructure arrows
+    I1 -.-> B
+    I1 -.-> LB
+    I1 -.-> C
+    I1 -.-> CS
+    I1 -.-> PS
+    I1 -.-> OS
+    I1 -.-> RS
+
+    %% Load Balancer connections
+    LB --> C1
+    LB --> C2
+    LB --> C3
+    C1 --> P
+    C2 --> P
+    C3 --> P
+
+```
+---
