@@ -49,7 +49,7 @@ More details (Zod schemas): `shared/schemas.ts`.
 
 ## Decisions
 
-*   **`cartId` in cookies:** We don't want to store cart data locally, instead we store `cartId` in cookies and fetch cart data from the server - this allows to keep the cart without logging in and merging carts if user logs with filled cart.
+*   **`cartId` in cookies:** We don't want to store cart data locally, instead we store `cartId` in cookies and fetch cart data from the server - this allows to keep the cart without logging in and merging carts if user logs with filled cart, and also possible to analyze cart abandonment and other metrics.
 *   **Mocked API:** Just to be able to work on the frontend without real database - simplicity.
 *   **`react-query`:** Convenient API data management.
 
