@@ -28,7 +28,8 @@ describe("Modal", () => {
       </Modal>
     );
 
-    const overlay = screen.getByTestId(testId).parentElement?.parentElement?.firstChild as HTMLElement;
+    const overlay = screen.getByTestId(testId).parentElement?.parentElement
+      ?.firstChild as HTMLElement;
     fireEvent.click(overlay);
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });

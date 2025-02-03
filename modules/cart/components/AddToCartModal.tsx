@@ -1,10 +1,10 @@
 "use client";
 
-import { useCart } from "@/app/modules/cart/hooks/useCart";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Input } from "@/components/Input";
 import { Modal } from "@/components/Modal";
+import { useCart } from "@/modules/cart/hooks/useCart";
 import { TEST_IDS } from "@/shared/test-ids";
 import { Product } from "@/shared/types";
 import { useTranslations } from "next-intl";
@@ -28,20 +28,24 @@ export function AddToCartModal({ item, onClose }: AddToCartModalProps) {
   // TODO: in real app we could use react-hook-form with zod resolver for validation
   const errors = {
     date: !selectedDate && dateFieldTouched ? t("validation.dateRequired") : "",
-    quantity: !quantity && quantityFieldTouched ? t("validation.quantityRequired") : "",
+    quantity:
+      !quantity && quantityFieldTouched ? t("validation.quantityRequired") : "",
   };
 
   const handleAddToCart = () => {
-    addToCart.mutate({
-      ticketId: item.id,
-      quantity,
-      date: selectedDate!.toISOString(),
-    }, {
-      onSuccess: onClose,
-      onError: (error) => {
-        console.error(t("errors.addToCartError"), error);
+    addToCart.mutate(
+      {
+        ticketId: item.id,
+        quantity,
+        date: selectedDate!.toISOString(),
       },
-    });
+      {
+        onSuccess: onClose,
+        onError: (error) => {
+          console.error(t("errors.addToCartError"), error);
+        },
+      }
+    );
   };
 
   const handleOnChangeDate = (date: Date | null) => {
@@ -56,10 +60,7 @@ export function AddToCartModal({ item, onClose }: AddToCartModalProps) {
   };
 
   return (
-    <Modal
-      onClose={onClose}
-      testId={TEST_IDS.ADD_TO_CART_MODAL}
-    >
+    <Modal onClose={onClose} testId={TEST_IDS.ADD_TO_CART_MODAL}>
       <Card
         title={item.name}
         description={item.description}
@@ -74,7 +75,9 @@ export function AddToCartModal({ item, onClose }: AddToCartModalProps) {
             </Button>
             <Button
               onClick={handleAddToCart}
-              disabled={addToCart.isPending || !cartId || !selectedDate || !quantity}
+              disabled={
+                addToCart.isPending || !cartId || !selectedDate || !quantity
+              }
               data-testid={TEST_IDS.ADD_TO_CART_MODAL_BUTTON}
             >
               {addToCart.isPending ? t("actions.adding") : t("actions.confirm")}

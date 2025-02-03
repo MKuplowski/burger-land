@@ -1,7 +1,7 @@
-import { ProductCard } from "@/app/modules/cart/components/ProductCard";
 import { Button } from "@/components/Button";
 import { Loading } from "@/components/Loading";
 import { Link } from "@/i18n/routing";
+import { ProductCard } from "@/modules/cart/components/ProductCard";
 import { mockProducts } from "@/shared/mocks";
 import { TEST_IDS } from "@/shared/test-ids";
 import { isAdmissionProduct, isBestseller } from "@/shared/types";
@@ -18,15 +18,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-8 md:p-12 lg:p-16 bg-gray-50">
+      <Suspense fallback={<Loading />}>
+        <HomeContent />
+      </Suspense>
 
-        <Suspense fallback={<Loading />}>
-          <HomeContent />
-        </Suspense>
-
-        <Suspense fallback={null}>
-          <CartButton />
-        </Suspense>
-
+      <Suspense fallback={null}>
+        <CartButton />
+      </Suspense>
     </main>
   );
 }
@@ -40,7 +38,11 @@ async function CartButton() {
       className="fixed bottom-8 right-8 animate-bounce-slow"
       data-testid={TEST_IDS.GO_TO_CART_BUTTON}
     >
-      <Button variant="primary" size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
+      <Button
+        variant="primary"
+        size="lg"
+        className="shadow-lg hover:shadow-xl transition-shadow"
+      >
         {t("sections.cart.view")}
       </Button>
     </Link>
@@ -53,7 +55,9 @@ async function HomeContent() {
 
   const AdmissionSection = () => (
     <section className="w-full">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-8">{t("sections.tickets.title")}</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-8">
+        {t("sections.tickets.title")}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {mockProducts.filter(isAdmissionProduct).map((product) => (
           <ProductCard key={product.id} product={product} />
@@ -64,7 +68,9 @@ async function HomeContent() {
 
   const BestsellersSection = () => (
     <section className="w-full" data-testid={TEST_IDS.BESTSELLERS}>
-      <h2 className="text-2xl font-semibold text-gray-800 mb-8">{t("sections.bestsellers.title")}</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-8">
+        {t("sections.bestsellers.title")}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {mockProducts.filter(isBestseller).map((product) => (
           <ProductCard key={product.id} product={product} />

@@ -15,12 +15,9 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     "shared/**/*.ts",
-    "shared/**/*.tsx"
+    "shared/**/*.tsx",
+    "components/**/*.ts",
+    "components/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules",
-    "**/*.cy.ts",
-    "cypress",
-    "cypress.config.ts"
-  ]
-} 
+  "exclude": ["node_modules", "**/*.cy.ts", "cypress", "cypress.config.ts"]
+}
